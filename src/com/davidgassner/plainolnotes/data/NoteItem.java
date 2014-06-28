@@ -9,7 +9,7 @@ public class NoteItem {
 
 	private String key;
 	private String text;
-	
+	private long id;
 	public static final String TEXT = "text";
 	public static final String KEY = "key";
 	
@@ -46,6 +46,12 @@ public class NoteItem {
 	@Override
 	public String toString() {
 		return this.getText();
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 }

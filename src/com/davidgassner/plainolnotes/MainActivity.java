@@ -3,6 +3,8 @@ package com.davidgassner.plainolnotes;
 import java.util.List;
 
 import com.davidgassner.plainolnotes.data.NoteItem;
+import com.davidgassner.plainolnotes.data.NoteSQLDataSource;
+import com.davidgassner.plainolnotes.data.NoteSQLHelper;
 import com.davidgassner.plainolnotes.data.NotesDataSource;
 
 import android.os.Bundle;
@@ -21,37 +23,44 @@ import android.widget.ListView;
 public class MainActivity extends ListActivity {
 
 	private NotesDataSource datasource;
+	private NoteSQLDataSource noteSQLDataSource;
 	List<NoteItem> notesList;
+	
+	private NoteSQLHelper sqlHelper;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		datasource = new NotesDataSource(this);
+//		datasource = new NotesDataSource(this);
+		
+		noteSQLDataSource = new NoteSQLDataSource(this);
+		noteSQLDataSource.open();
 		
 		refreshDisplay();
 		
+		sqlHelper = new NoteSQLHelper(this);
 		
 		
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode==1001 && resultCode ==RESULT_OK){
+			NoteItem noteItem = new NoteItem();
+			noteItem.setKey(data.getStringExtra("key"));
+			noteItem.setText(data.getStringExtra("text"));
+			noteSQLDataSource.create(noteItem);
+		}
 		
-		AlertDialog alert = new AlertDialog.Builder(this).create();
-<<<<<<< HEAD
-		alert.setButton(0, "Button4", new DialogInterface.OnClickListener() {
-=======
-		alert.setButton(0, "ButtonCalvinWindoro", new DialogInterface.OnClickListener() {
->>>>>>> windoro
-			
-			@Override
-			public void onClick(DialogInterface arg0, int arg1) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		refreshDisplay();
 	}
 
 	private void refreshDisplay() {
-		notesList = datasource.findAll();
+//		notesList = datasource.findAll();
+		notesList=noteSQLDataSource.findAll();
 		ArrayAdapter<NoteItem> adapter =
 				new ArrayAdapter<NoteItem>(this, R.layout.list_item_layout, notesList);
 		setListAdapter(adapter);
