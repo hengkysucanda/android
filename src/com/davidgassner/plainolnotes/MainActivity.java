@@ -56,6 +56,7 @@ public class MainActivity extends ListActivity {
 		}
 		
 		refreshDisplay();
+
 	}
 
 	private void refreshDisplay() {
