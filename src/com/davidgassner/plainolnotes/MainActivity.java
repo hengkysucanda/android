@@ -32,7 +32,7 @@ public class MainActivity extends ListActivity {
 		
 		refreshDisplay();
 		AlertDialog alert = new AlertDialog.Builder(this).create();
-		alert.setButton(0, "Button3", new DialogInterface.OnClickListener() {
+		alert.setButton(0, "Button4", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
