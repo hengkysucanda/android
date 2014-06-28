@@ -72,7 +72,7 @@ public class MainActivity extends ListActivity {
 		Intent intent = new Intent(this, NoteEditorActivity.class);
 		intent.putExtra("key", note.getKey());
 		intent.putExtra("text", note.getText());
-		startActivityForResult(intent, 1001);
+		startActivityForResult(intent, 1001);;
 		
 	}
 	
