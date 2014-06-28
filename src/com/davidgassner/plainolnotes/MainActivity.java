@@ -31,15 +31,15 @@ public class MainActivity extends ListActivity {
 		datasource = new NotesDataSource(this);
 		
 		refreshDisplay();
-//		AlertDialog alert = new AlertDialog.Builder(this).create();
-//		alert.setButton(0, "try", new DialogInterface.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(DialogInterface arg0, int arg1) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		});
+		AlertDialog alert = new AlertDialog.Builder(this).create();
+		alert.setButton(0, "Button3", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	private void refreshDisplay() {
