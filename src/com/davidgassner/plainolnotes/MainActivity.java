@@ -31,6 +31,10 @@ public class MainActivity extends ListActivity {
 		datasource = new NotesDataSource(this);
 		
 		refreshDisplay();
+		
+		
+		
+		
 		AlertDialog alert = new AlertDialog.Builder(this).create();
 		alert.setButton(0, "Button4", new DialogInterface.OnClickListener() {
 			
